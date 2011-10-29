@@ -110,7 +110,7 @@ function (req, res, rate, limit, resetTime, next) {
 
 Below is code demonstrating use and customization of most of the use cases of rate:
 
-'''js
+```js
 
 var rate            = require('../lib/rate'),
   redis     = require('redis'),
