@@ -3,7 +3,7 @@
   , "version": "0.0.1"
   , "author": "Ilya Volodarsky <ilya@segment.io>"
   , "keywords": ["rate", "monitor", "limit", "monitoring", "performance"]
-  , "repository": "git://github.com/ClassMetric/rate"
+  , "repository": "git@github.com:ClassMetric/express-rate.git"
   , "main": "./index.js"
   , "dependencies": { "redis": ">= 0.0.1" }
   , "devDependencies": { "connect": "1.4.x" }

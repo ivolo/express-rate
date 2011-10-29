@@ -12,7 +12,7 @@ This is an alpha release.
 Note: this module requires redis > 2.1.3 because of changes in the behavior of the [expire](http://redis.io/topics/expire) action.
 
 
-##### Options:
+## Options:
 
 - *handler*
 
