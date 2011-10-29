@@ -243,11 +243,11 @@ app.listen(3000);
 
 Get the testing requirements:
 
-  $ npm install expresso -g
-  $ npm install should
+    $ npm install expresso -g
+    $ npm install should
 
 Go to the root project directory and run:
 
-  $ make test
+    $ make test
 
 Note: redis tests (/test/redis.tests.js) work seperately but not together.

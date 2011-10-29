@@ -18,7 +18,6 @@ var redisHandler = new rate.Redis.RedisRateHandler({client: client});
 // If we switch interval to 10, then we are counting how many requests this route is handling per 10 seconds.
 var simpleMiddleware = rate.middleware({handler: redisHandler, interval: 1});
 
-// apply the rate middleware to the / route
 app.get('/', simpleMiddleware, function(req, res, next){
 	res.send('I am being rate monitored at requests per 1 second.')
 });
@@ -28,7 +27,6 @@ app.get('/', simpleMiddleware, function(req, res, next){
 //
 var monitorMiddleware1 = rate.middleware({handler: redisHandler, interval: 1});
 
-// apply the rate middleware to the / route
 app.get('/route-rate', monitorMiddleware1, function(req, res, next){
 	var rateKey = req.route.method + ':' + req.route.regexp;
 	redisHandler.getRate(rateKey, null, next, function (rate) {
@@ -41,7 +39,6 @@ app.get('/route-rate', monitorMiddleware1, function(req, res, next){
 //
 var monitorMiddleware2 = rate.middleware({handler: redisHandler, interval: 1});
 
-// apply the rate middleware to the / route
 app.get('/me-rate', monitorMiddleware2, function(req, res, next){
 	var rateKey = req.route.method + ':' + req.route.regexp;
 	var remoteKey = req.connection.remoteAddress;
