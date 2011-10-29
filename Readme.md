@@ -16,9 +16,9 @@ Note: this module requires redis > 2.1.3 because of changes in the behavior of t
 
 - *handler*
 
-'''js
+```js
 new rate.Redis.RedisRateHandler({client: redis.createClient()})
-'''
+```
 
   The rate handler that stores the routes for the rate. The built in handlers are for Redis (recommended) 
   and Memory (for testing or single webserver clusters - use new rate.Memory.MemoryRateHandler() ).
