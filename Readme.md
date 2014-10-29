@@ -96,7 +96,7 @@ function (req, res, rate, limit, resetTime) {
 function (req, res, rate, limit, resetTime, next) {
             
     // HTTP code 420 from http://mehack.com/inventing-a-http-response-code-aka-seriously
-    res.json({error: 'Rate limit exceeded. Check headers for limit information.'}, {status: 420});
+    res.json({error: 'Rate limit exceeded. Check headers for limit information.'}, 420);
 }
 ```
 
