@@ -1,11 +1,27 @@
-{   "name": "express-rate"
-  , "description": "Rate monitoring and limiting for express.js apps."
-  , "version": "0.0.1"
-  , "author": "Ilya Volodarsky <ilya@segment.io>"
-  , "keywords": ["rate", "monitor", "limit", "monitoring", "performance"]
-  , "repository": "git@github.com:segmentio/express-rate.git"
-  , "main": "./index.js"
-  , "dependencies": { "redis": ">= 0.0.1" }
-  , "devDependencies": { "connect": "1.4.x" }
-  , "engines": { "node": ">= 0.1.98" }
+{
+  "name": "express-rate",
+  "description": "Rate monitoring and limiting for express.js apps.",
+  "version": "0.0.1",
+  "author": "Ilya Volodarsky <ilya@segment.io>",
+  "keywords": [
+    "rate",
+    "monitor",
+    "limit",
+    "monitoring",
+    "performance"
+  ],
+  "repository": "git@github.com:segmentio/express-rate.git",
+  "main": "./index.js",
+  "dependencies": {
+    "redis": ">= 0.0.1"
+  },
+  "devDependencies": {
+    "express": ">= 4.7.0",
+    "async": "~0.9.0",
+    "chai": "~1.9.2",
+    "supertest": "~0.14.0"
+  },
+  "engines": {
+    "node": ">= 0.1.98"
+  }
 }
