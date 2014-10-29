@@ -22,7 +22,6 @@ describe('Redis-based rate handling', function () {
     };
         
     it('Routes can be rate limited, reallowed, and have proper headers', function (done) {
-        this.timeout(3000);
         common['Routes can be rate limited, reallowed, and have proper headers'](handler, done);
     });
 });    
