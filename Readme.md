@@ -60,7 +60,7 @@ function (req) {
 }
 ```
 
-  A function that allows you to switch how rate identifies a route. By fefault, its the method:route_regex
+  A function that allows you to switch how rate identifies a route. By default, its the method:route_regex
 
 - *setHeaders*
 
@@ -96,7 +96,7 @@ function (req, res, rate, limit, resetTime) {
 function (req, res, rate, limit, resetTime, next) {
             
     // HTTP code 420 from http://mehack.com/inventing-a-http-response-code-aka-seriously
-    res.json({error: 'Rate limit exceeded. Check headers for limit information.'}, {status: 420});
+    res.json({error: 'Rate limit exceeded. Check headers for limit information.'}, 420);
 }
 ```
 
