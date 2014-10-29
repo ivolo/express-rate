@@ -60,7 +60,7 @@ function (req) {
 }
 ```
 
-  A function that allows you to switch how rate identifies a route. By fefault, its the method:route_regex
+  A function that allows you to switch how rate identifies a route. By default, its the method:route_regex
 
 - *setHeaders*
 
