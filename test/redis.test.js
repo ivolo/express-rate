@@ -4,38 +4,26 @@ var common          = require('./common.rate');
     redis           = require('redis'),
     client          = redis.createClient();
 
-var onFinished = function () {
-    client.end();
-};
+describe('Redis-based rate handling', function () {
+    var handler = new rate.Redis.RedisRateHandler({client: client});
 
-module.exports = {
+    it('baseline: server can be tested', function (done) {
+        common['baseline: server can be tested'](done);
+    });
+    it('server records rate', function (done) {
+        common['server records rate'](handler, done);
+    });
+    it('Reset after interval', function (done) {
+        common['Reset after interval'](handler, done);
+    });
 
+    handler.checkttl = function(key, cb) {
+        return client.ttl(key, cb);
+    };
 
-    //
-    // TODO: I have not figured out how tu run these tests in parallel or in serial (--serial flag) because of the
-    // shared REDIS resource, if run one at a time, each of them pass for me, but not together
-    // 
-
-    /*
-    'baseline: server can be tested' : function () {
-        common['baseline: server can be tested']();
-    },
-
-
-    'server records rate': function (done) {
-        var handler = new rate.Redis.RedisRateHandler({client: client});
-        common['server records rate'](handler, onFinished);
-    },
-
-    'Reset after interval': function (done) {
-        var handler = new rate.Redis.RedisRateHandler({client: client});
-        common['Reset after interval'](handler, onFinished);
-    },
-    */
-
-    'Routes can be rate limited, reallowed, and have proper headers': function (done) {
-        var handler = new rate.Redis.RedisRateHandler({client: client});
-        common['Routes can be rate limited, reallowed, and have proper headers'](handler, onFinished);
-    }
-
-};
+    handler.clockResolution = 1000; // Redis clock accuracy in milliseconds.
+        
+    it('Routes can be rate limited, reallowed, and have proper headers', function (done) {
+        common['Routes can be rate limited, reallowed, and have proper headers'](handler, done);
+    });
+});    

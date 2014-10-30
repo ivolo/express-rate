@@ -2,28 +2,29 @@
 var common          = require('./common.rate');
     rate            = require('../lib/rate');
 
-var onFinished = function () {
-    
-};
+describe('Memory-based rate handling', function () {
+    var handler = new rate.Memory.MemoryRateHandler();
 
-module.exports = {
+    it('baseline: server can be tested', function (done) {
+        common['baseline: server can be tested'](done);
+    });
 
-    'baseline: server can be tested' : function () {
-        common['baseline: server can be tested']();
-    },
+    it('server records rate', function (done) {
+        common['server records rate'](handler, done);
+    });
 
-    'server records rate': function (done) {
-        var handler = new rate.Memory.MemoryRateHandler();
-        common['server records rate'](handler, onFinished);
-    },
+    it('Reset after interval', function (done) {
+        common['Reset after interval'](handler, done);
+    });
 
-    'Reset after interval': function (done) {
-        var handler = new rate.Memory.MemoryRateHandler();
-        common['Reset after interval'](handler, onFinished);
-    },
+    handler.checkttl = function(key, cb) {
+        var currentTime = (new Date()).getTime();
+        return cb(null,handler.rates[key].ttl - currentTime);
+    };
 
-    'Routes can be rate limited, reallowed, and have proper headers': function (done) {
-        var handler = new rate.Memory.MemoryRateHandler();
-        common['Routes can be rate limited, reallowed, and have proper headers'](handler, onFinished);
-    }
-};
+    handler.clockResolution = 0; // Memory TTLs are accurate.
+
+    it('Routes can be rate limited, reallowed, and have proper headers', function (done) {
+        common['Routes can be rate limited, reallowed, and have proper headers'](handler, done);
+    });
+});
