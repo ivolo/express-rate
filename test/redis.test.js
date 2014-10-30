@@ -20,6 +20,8 @@ describe('Redis-based rate handling', function () {
     handler.checkttl = function(key, cb) {
         return client.ttl(key, cb);
     };
+
+    handler.clockResolution = 1000; // Redis clock accuracy in milliseconds.
         
     it('Routes can be rate limited, reallowed, and have proper headers', function (done) {
         common['Routes can be rate limited, reallowed, and have proper headers'](handler, done);

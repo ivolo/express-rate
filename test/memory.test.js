@@ -22,6 +22,8 @@ describe('Memory-based rate handling', function () {
         return cb(null,handler.rates[key].ttl - currentTime);
     };
 
+    handler.clockResolution = 0; // Memory TTLs are accurate.
+
     it('Routes can be rate limited, reallowed, and have proper headers', function (done) {
         common['Routes can be rate limited, reallowed, and have proper headers'](handler, done);
     });

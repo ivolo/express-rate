@@ -153,8 +153,7 @@ module.exports = {
                                         } else {
                         	            var currentTime = (new Date()).getTime();
                         	            var expectedExpiryTime = parseInt(res.headers['X-RateLimit-Reset'.toLowerCase()]);
-                                            var redisInaccuracy = 1000; // Redis clock resolution, 1 second.
-                                            assert.operator(currentTime, '>', expectedExpiryTime - redisInaccuracy);
+                                            assert.operator(currentTime, '>', expectedExpiryTime - handler.clockResolution);
                         	            lastCheck = true;
                             	            makeRequest({body: responseBody});
                                         }
