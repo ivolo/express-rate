@@ -60,7 +60,17 @@ function (req) {
 }
 ```
 
-  A function that allows you to switch how rate identifies a route. By fefault, its the method:route_regex
+  A function that allows you to switch how rate identifies a route. By default, its the method:route_regex
+
+- *getRemoteLimit*
+
+```js
+function (req) {
+  return {interval: 1, limit: 0};
+}
+```
+
+  A function that allows you to switch the limit by a route or identifies. By default, its `null`.
 
 - *setHeaders*
 
